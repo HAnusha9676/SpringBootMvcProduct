@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Product</title>
+</head>
+<body>
+<div th:fragment="content">
+<h1>Search Product by ID</h1>
+
+<!-- Search form -->
+<form action="/searchProductById" method="post">
+    <label for="productId">Enter Product ID:</label>
+    <input type="text" id="productId" name="proId" required>
+    <button type="submit">Search</button>
+</form>
+
+<a href="/getProducts">Back to Product List</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Product</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Edit Product</h2>
+
+<form th:action="@{/update(proId=${proId})}" method="post" th:object="${productModel}">
+    
+    <div class="form-group">
+        <label for="proName">Product Name</label>
+        <input type="text" th:field="*{proName}" class="form-control" id="proName">
+    </div>
+    <div class="form-group">
+        <label for="proBrand">Brand</label>
+        <input type="text" th:field="*{proBrand}" class="form-control" id="proBrand">
+    </div>
+    <div class="form-group">
+        <label for="proPrice">Price</label>
+        <input type="number" th:field="*{proPrice}" class="form-control" id="proPrice">
+    </div>
+    
+    
+    <div class="form-group">
+    <label for="proCategory">Product Category</label>
+    <select th:field="*{proCategory}" class="form-control" id="proCategory" required>
+        <option value="" disabled>Select Category</option>
+        <option th:each="category : ${categories}" 
+                th:value="${category}" 
+                th:text="${category}">
+        </option>
+    </select>
+</div>
+    
+    <div class="form-group">
+        <label for="proDescription">Description</label>
+        <textarea th:field="*{proDescription}" class="form-control" id="proDescription"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Product</button>
+</form>
+
+</div>
+
+</body>
+</html>

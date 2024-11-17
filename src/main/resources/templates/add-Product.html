@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5" th:fragment="content">
+        <h2 class="mb-4">Product Form</h2>
+        
+        <!-- Form to submit product data -->
+        <form th:action="@{/saveProduct}" th:object="${productModel}" method="post">
+        
+            <!-- Product Name -->
+            <div class="form-group">
+                <label for="proName">Product Name:</label>
+                <input type="text" id="proName" th:field="*{proName}" class="form-control" placeholder="Enter product name">
+                <!-- Error message for product name -->
+                <div th:if="${#fields.hasErrors('proName')}" class="text-danger" th:errors="*{proName}">Invalid Product Name</div>
+            </div>
+
+            <!-- Product Price -->
+            <div class="form-group">
+                <label for="proPrice">Product Price:</label>
+                <input type="number" id="proPrice" th:field="*{proPrice}" class="form-control" step="0.01" placeholder="Enter product price">
+                <!-- Error message for product price -->
+                <div th:if="${#fields.hasErrors('proPrice')}" class="text-danger" th:errors="*{proPrice}">Invalid Price</div>
+            </div>
+
+            <!-- Product Brand -->
+            <div class="form-group">
+                <label for="proBrand">Product Brand:</label>
+                <input type="text" id="proBrand" th:field="*{proBrand}" class="form-control" placeholder="Enter product brand">
+                <!-- Error message for product brand -->
+                <div th:if="${#fields.hasErrors('proBrand')}" class="text-danger" th:errors="*{proBrand}">Invalid Brand</div>
+            </div>
+
+            <!-- Product Description -->
+            <div class="form-group">
+                <label for="proDescription">Product Description:</label>
+                <textarea id="proDescription" th:field="*{proDescription}" class="form-control" rows="4" placeholder="Enter product description"></textarea>
+                <!-- Error message for product description -->
+                <div th:if="${#fields.hasErrors('proDescription')}" class="text-danger" th:errors="*{proDescription}">Invalid Description</div>
+            </div>
+
+            <!-- Product Category Dropdown -->
+            <div class="form-group">
+                <label for="proCategory">Product Category:</label>
+                <select id="proCategory" th:field="*{proCategory}" class="form-control">
+                    <option value="">Select a category</option>
+                    <option value="Mobiles">Mobiles</option>
+                    <option value="camera">Camera</option>
+                    <option value="tv">TV</option>
+                    <option value="other">Other</option>
+                </select>
+                <!-- Error message for product category -->
+                <div th:if="${#fields.hasErrors('proCategory')}" class="text-danger" th:errors="*{proCategory}">Invalid Category</div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
